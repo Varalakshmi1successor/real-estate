@@ -1,5 +1,18 @@
 import express   from 'express';
+import mongoose  from 'mongoose';
+import dotenv    from 'dotenv';
+import { dot } from 'node:test/reporters';
+dotenv.config();
 
+// Connect to MongoDB
+mongoose
+  .connect(process.env.MONGO)
+  .then(() => {
+    console.log('Connected to MongoDB!');
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 const app = express();
 
